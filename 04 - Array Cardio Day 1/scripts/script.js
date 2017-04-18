@@ -25,7 +25,7 @@
         }
     });
     // console.log(fifteen);
-    console.table(fifteen); // to see it in table
+    // console.table(fifteen); // to see it in table
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
@@ -47,7 +47,7 @@
     console.table(ordered);*/
 
     const ordered = inventors.sort((a,b) => a.year > b.year ? 1 : -1);
-    console.table(ordered);
+    // console.table(ordered);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
@@ -56,9 +56,21 @@
         return total + (inventor.passed - inventor.year);
     },0);
 
-    console.log(totalYears);
+    // console.log(totalYears);
 
     // 5. Sort the inventors by years lived
+
+    const oldest = inventors.sort(function(a,b) {
+        const lastGuy = a.passed - a.year;
+        const nextGuy = b.passed - b.year;
+        return lastGuy > nextGuy ? -1 : 1; // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Expressions_and_Operators#Conditional_(ternary)_operator
+        /*if(lastGuy > nextGuy) {
+            return -1;
+        } else {
+            return 1;
+        }*/
+    });
+    console.table(oldest)
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
